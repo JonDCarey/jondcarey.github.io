@@ -1,0 +1,54 @@
+@use '../abstracts' as *
+
+.site-header
+  position: absolute
+  top: 0
+  left: 0
+  right: 0
+  z-index: 5
+  &__container
+    display: flex
+    flex-flow: row wrap
+    align-items: center
+    justify-content: space-between
+    padding-top: $spacingL
+    padding-bottom: $spacingL
+    @include viewport($small)
+      flex-flow: row nowrap
+
+
+  &__logo
+    font: $serif400
+    font-size: clamp(1.875rem, 0.109vw + 1.851rem, 2rem)
+    text-align: center
+    margin: 0 auto
+    @include viewport($small)
+      text-align: left
+      margin: unset
+
+
+  &__nav
+    a
+      font-size: 0.9375rem
+      letter-spacing: 0.065625rem
+      text-transform: uppercase
+      padding: 12px 12px 12px 0
+      display: none
+      @include viewport($small)
+        display: inline-flex
+        padding: 12px
+      &::after
+        content: ''
+        height: 2px
+        width: 0px
+        background: $black
+        display: block
+        position: absolute
+        bottom: 6px
+        left: 12px
+        right: 12px
+        transition: width $speedSlow $smooth
+      &:hover
+        text-decoration: none
+        &::after
+          width: calc(100% - 24px)

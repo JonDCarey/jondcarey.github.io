@@ -1,0 +1,95 @@
+@use '../abstracts' as *
+
+.hero
+  position: relative
+  overflow: visible
+  overflow-x: clip
+  @include viewport($large)
+    padding-top: calc($rowSpacing / 4)
+
+  &__container
+    display: flex
+    flex-flow: row wrap
+    align-items: center
+    justify-content: space-around
+    overflow: visible
+    margin-bottom: 30px
+    @include viewport($medium)
+      height: 80svh
+      margin-bottom: 200px
+    @include viewport($large)
+      margin-bottom: 100px
+
+  &__image
+    order: 2
+    flex: 0 0 clamp(18rem, 8.261vw + 16.141rem, 27.5rem)
+    aspect-ratio: 1/1
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70% 
+    overflow: hidden
+    margin-top: 40px
+    @include viewport($small)
+      margin: -40px auto 0 60px
+    @include viewport($medium)
+      margin: -60px auto 0 60px
+    @include viewport($large)
+      order: 1
+      margin: unset
+      margin-top: 100px
+    @include viewport($xlarge)
+      margin-top: 200px
+    img
+      object-fit: cover
+      width: 100%
+      height: 100%
+
+  &__text
+    order: 1
+    flex: 0 1 auto
+    margin-top: 60px
+    @include viewport($medium)
+      margin-left: auto
+      margin-right: 0
+    @include viewport($large)
+      order: 2
+
+  &__title
+    text-align: center
+    margin-left: auto
+    margin-right: 0
+    @include viewport($small)
+      text-align: right
+
+  &__sub-title
+    flex: 1 1 auto
+    font-size: clamp(1.25rem, 0vw + 1.25rem, 1.25rem)
+    line-height: clamp(1.4875rem, 0.228vw + 1.436rem, 1.75rem)
+    color: $gray900
+    text-align: center
+    align-self: flex-start
+    margin-top: $spacingXl
+    @include viewport($small)
+      text-align: right
+
+  .section-title
+    position: absolute
+    z-index: -1
+    &-mobile
+      left: 0
+      top: 0
+      font-size: 26rem
+      @include viewport($small)
+        display: none
+    &-1
+      left: 0
+      top: 0
+      display: none
+      @include viewport($small)
+        display: block
+    &-2
+      top: 200px
+      right: 0
+      display: none
+      @include viewport($small)
+        display: block
+      @include viewport($medium)
+        bottom: 0

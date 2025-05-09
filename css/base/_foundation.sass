@@ -1,0 +1,394 @@
+@use '../abstracts' as *
+
+// asign grid classes to viewport variables
+$viewports: ('xsmall': $xsmall, 'small': $small, 'medium': $medium, 'large': $large, 'xlarge': $xlarge, 'full': $full)
+
+.cell
+  flex: 0 0 auto
+  min-height: 0
+  min-width: 0
+  width: 100%
+  &.auto
+    flex: 1 1 0
+  &.shrink
+    flex: 0 0 auto
+
+.grid-x
+  display: flex
+  flex-flow: row wrap
+  & > .auto, & > .shrink
+    width: auto
+
+.grid-y
+  display: flex
+  flex-flow: column nowrap
+  & > .cell
+    height: auto
+    max-height: none
+  & > .auto, & > .shrink
+    height: auto
+
+.grid-margin-x
+  margin-left: calc(0px - calc($gutterWidth / 2))
+  margin-right: calc(0px - calc($gutterWidth / 2))
+  & > .cell
+    width: calc(100% - $gutterWidth)
+    margin-left: calc($gutterWidth / 2)
+    margin-right: calc($gutterWidth / 2)
+  &:not(.grid-x) > .cell
+    width: auto
+  & > .auto, & > .shrink
+    width: auto
+
+.grid-padding-x
+  & .grid-padding-x
+    margin-left: calc(0px - calc($gutterWidth / 2))
+    margin-right: calc(0px - calc($gutterWidth / 2))
+  & > .cell
+    padding-left: calc($gutterWidth / 2)
+    padding-right: calc($gutterWidth / 2)
+
+.grid-margin-y
+  margin-top: calc(0px - calc($gutterWidth / 2))
+  margin-bottom: calc(0px - calc($gutterWidth / 2))
+  & > .cell
+    height: calc(100% - $gutterWidth)
+    margin-top: calc($gutterWidth / 2)
+    margin-bottom: calc($gutterWidth / 2)
+  &:not(.grid-y) > .cell
+    height: auto
+  & > .auto, & > .shrink
+    height: auto
+
+.grid-padding-y 
+  & .grid-padding-y
+    margin-top: calc(0px - calc($gutterWidth / 2))
+    margin-bottom: calc(0px - calc($gutterWidth / 2))
+  & > .cell
+    padding-top: calc($gutterWidth / 2)
+    padding-bottom: calc($gutterWidth / 2)
+
+.grid-frame
+  overflow: hidden
+  position: relative
+  flex-wrap: nowrap
+  align-items: stretch
+  width: 100vw
+  .cell &
+    width: 100%
+  &.grid-y
+    overflow: hidden
+    position: relative
+    flex-wrap: nowrap
+    align-items: stretch
+    height: 100vh
+    width: auto
+    .cell &
+      height: 100%
+  &.grid-margin-y
+    height: calc(100vh + $gutterWidth)
+
+.cell-block
+  overflow-x: auto
+  max-width: 100%
+  -webkit-overflow-scrolling: touch
+  -ms-overflow-style: -ms-autohiding-scrollbar
+
+.cell-block-y
+  overflow-y: auto
+  max-height: 100%
+  min-height: 100%
+  -webkit-overflow-scrolling: touch
+  -ms-overflow-style: -ms-autohiding-scrollbar
+
+.cell-block-container
+  display: flex
+  flex-direction: column
+  max-height: 100%
+  & > .grid-x
+    max-height: 100%
+    flex-wrap: nowrap
+
+.flex-container
+  display: flex
+
+.flex-child-auto
+  flex: 1 1 auto
+
+.flex-child-grow
+  flex: 1 0 auto
+
+.flex-child-shrink
+  flex: 0 1 auto
+
+.flex-dir-row
+  flex-direction: row
+
+.flex-dir-row-reverse
+  flex-direction: row-reverse
+
+.flex-dir-column
+  flex-direction: column
+
+.flex-dir-column-reverse
+  flex-direction: column-reverse
+
+@mixin size($viewPort)
+  
+  .grid-x
+    & > .#{$viewPort}
+      &-shrink
+        flex-basis: auto
+        flex: 0 0 auto
+        width: auto
+      &-full
+        flex-basis: auto
+      &-auto
+        flex: 1 1 0
+        width: auto
+
+  .grid-y
+    & > .#{$viewPort}
+      &-shrink
+        flex-basis: auto
+      &-full
+        flex-basis: auto
+      &-auto
+        flex: 1 1 0
+        height: auto
+
+  .grid-margin-x
+    & > .#{$viewPort}
+      &-shrink
+        width: auto
+      &-auto
+        width: auto
+    &.#{$viewPort}
+      &-up-1 > .cell
+        width: 100%
+      &-up-2 > .cell
+        width: 50%
+      &-up-3 > .cell
+        width: 33.33333%
+      &-up-4 > .cell
+        width: 25%
+      &-up-5 > .cell
+        width: 20%
+      &-up-6 > .cell
+        width: 16.66667%
+      &-up-7 > .cell
+        width: 14.28571%
+      &-up-8 > .cell
+        width: 12.5%
+
+  .grid-margin-y
+    & > .#{$viewPort}
+      &-shrink
+        height: auto
+      &-auto
+        height: auto
+
+  .#{$viewPort}
+    &-up-1 > .cell
+      width: 100%
+    &-up-2 > .cell
+      width: 50%
+    &-up-3 > .cell
+      width: 33.33333%
+    &-up-4 > .cell
+      width: 25%
+    &-up-5 > .cell
+      width: 20%
+    &-up-6 > .cell
+      width: 16.66667%
+    &-up-7 > .cell
+      width: 14.28571%
+    &-up-8 > .cell
+      width: 12.5%
+    &-grid-frame
+      overflow: hidden
+      position: relative
+      flex-wrap: nowrap
+      align-items: stretch
+      width: 100vw
+      .cell &
+        width: 100%
+      &.grid-y
+        overflow: hidden
+        position: relative
+        flex-wrap: nowrap
+        align-items: stretch
+        height: 100vh
+        width: auto
+      &.grid-margin-y
+        height: calc(100vh + $gutterWidth)
+    &-cell-block
+      overflow-x: auto
+      max-width: 100%
+      -webkit-overflow-scrolling: touch
+      -ms-overflow-style: -ms-autohiding-scrollbar
+    &-cell-block-container
+      display: flex
+      flex-direction: column
+      max-height: 100%
+      & > .grid-x
+        max-height: 100%
+        flex-wrap: nowrap
+    &-cell-block-y
+      overflow-y: auto
+      max-height: 100%
+      min-height: 100%
+      -webkit-overflow-scrolling: touch
+      -ms-overflow-style: -ms-autohiding-scrollbar
+    .cell &-grid-frame.grid-y
+      height: 100%
+    &-flex-container
+      display: flex
+    &-flex-child
+      &-auto
+        flex: 1 1 auto
+      &-grow
+        flex: 1 0 auto
+      &-shrink
+        flex: 0 1 auto
+    &-flex-dir
+      &-row
+        flex-direction: row
+      &-reverse
+        flex-direction: row-reverse
+      &-column
+        flex-direction: column
+      &-column-reverse
+        flex-direction: column-reverse
+    
+  @for $i from 0 through $columnCount
+    .grid-x
+      & > .#{$viewPort}-#{$i}
+        flex-basis: auto
+        flex: 0 0 auto
+        width: calc(100% / $columnCount * $i)
+
+    .grid-y 
+      & > .#{$viewPort}-#{$i}
+        flex: 0 0 auto
+        height: calc(100% / $columnCount * $i)
+
+    .grid-margin-x
+      & > .#{$viewPort}-#{$i}
+        width: calc(100% / $columnCount * $i - $gutterWidth)
+
+    .grid-margin-y
+      & > .#{$viewPort}-#{$i}
+        height: calc(100% / $columnCount * $i - $gutterWidth)
+
+    .#{$viewPort}
+      &-order-#{$i}
+        order: #{$i}
+
+  @for $i from 1 through $columnCount
+    .#{$viewPort}-offset-#{$i}
+      margin-left: calc(100% / $columnCount * $i)
+      .grid-margin-x > &
+        margin-left: calc(100% / $columnCount * $i + calc($gutterWidth / 2))
+  
+  .#{$viewPort}-offset-0
+    margin-left: 0
+    .grid-margin-x > &
+      margin-left: calc($gutterWidth / 2)
+
+
+  //=== MARGIN & PADDING COLLAPSE ===//
+  // @each $viewportKey, $viewportValue in $viewports
+  //   .#{$viewPort}
+  //     &-margin-collapse
+  //       margin-right: 0
+  //       margin-left: 0
+  //       & > .cell
+  //         margin-right: 0
+  //         margin-left: 0
+  //     &-padding-collapse
+  //       margin-right: 0
+  //       margin-left: 0
+  //       & > .cell
+  //         padding-right: 0
+  //         padding-left: 0
+  //   @for $i from 0 through $columnCount
+  //     .#{$viewPort}
+  //       &-margin-collapse
+  //         & > .#{$viewportKey}-#{$i}
+  //           width: calc(100% / $columnCount * $i)
+
+// viewport loop
+@each $viewportKey, $viewportValue in $viewports
+  @include viewport($viewportValue)
+    @include size($viewportKey)
+
+.align-left
+  justify-content: flex-start
+
+.align-right
+  justify-content: flex-end
+
+.align-center
+  justify-content: center
+
+.align-justify
+  justify-content: space-between
+
+.align-spaced
+  justify-content: space-around
+
+.align-top
+  align-items: flex-start
+
+.align-self-top
+  align-self: flex-start
+
+.align-bottom
+  align-items: flex-end
+
+.align-self-bottom
+  align-self: flex-end
+
+.align-middle
+  align-items: center
+
+.align-self-middle
+  align-self: center
+
+.align-stretch
+  align-items: stretch
+
+.align-self-stretch
+  align-self: stretch
+
+.align-center-middle
+  justify-content: center
+  align-items: center
+  align-content: center
+
+.contain
+  width: 100%
+  overflow: hidden
+  margin-left: auto
+  margin-right: auto
+  max-width: calc($containWidth + (clamp(1.5rem, 5.333vw + 0.433rem, 5.5rem) * 2))
+  padding-right: clamp(1.5rem, 5.333vw + 0.433rem, 5.5rem)
+  padding-left: clamp(1.5rem, 5.333vw + 0.433rem, 5.5rem)
+  &.fluid
+    max-width: 100%
+  &.full
+    padding-right: 0
+    padding-left: 0
+    max-width: 100%
+  &:not(.full) > .grid-padding-x
+    margin-right: calc(0px - calc($gutterWidth / 2))
+    margin-left: calc(0px - calc($gutterWidth / 2))
+  &-wide
+    width: 100%
+    overflow: hidden
+    margin-left: auto
+    margin-right: auto
+    padding-right: clamp(1.5rem, 5.333vw + 0.433rem, 5.5rem)
+    padding-left: clamp(1.5rem, 5.333vw + 0.433rem, 5.5rem)
+    max-width: $wideContainWidth

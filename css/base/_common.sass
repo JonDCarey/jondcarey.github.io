@@ -1,0 +1,217 @@
+@use '../abstracts' as *
+
+*,
+*::before,
+*::after
+  box-sizing: inherit
+
+html
+  box-sizing: border-box
+  scroll-behavior: smooth
+  position: relative
+
+
+
+// ---------------------------------------------
+// Elements
+// ---------------------------------------------
+
+body
+  background-color: $gray100
+  font: $sans400
+  font-size: $fontSizeS
+  line-height: $lineHeightS
+  color: $black
+  margin: 0
+  transition: background-color 1s $smooth
+  &.scrolled
+    background-color: $gray50
+
+h1, .heading-1
+  font: $serif400
+  font-size: $fontSizeXl
+  line-height: $lineHeightXl
+  margin-top: 0
+  margin-bottom: 0
+
+h2, .heading-2
+  font: $serif400
+  font-size: $fontSizeXl
+  line-height: $lineHeightXl
+  margin-top: 0
+  margin-bottom: $spacingL
+
+h3, .heading-3
+  font: $serif400
+  font-size: $fontSizeL
+  line-height: $lineHeightL
+  color: $black
+  margin-top: 0
+  margin-bottom: $spacingXl
+
+h4, .heading-4
+  font: $serif400
+  font-size: $fontSizeM
+  line-height: $lineHeightM
+  color: $gray900
+  margin-top: 0
+  margin-bottom: $spacingXxs
+  & + hr
+    margin-top: 0
+    margin-bottom: calc($spacingXs + 3px)
+
+h5, .heading-5
+  font: $sans400
+  font-size: $fontSizeM
+  line-height: $lineHeightM
+  color: $gray900
+
+h6, .heading-6
+  font: $sans700
+  font-size: $fontSizeXs
+  line-height: $lineHeightXs
+  letter-spacing: 0.91px
+  text-transform: uppercase
+
+.section-title
+  position: absolute
+  top: clamp(-15rem, -2.609vw + -11.413rem, -12rem)
+  font: $sans700
+  font-size: $fontSizeXxl
+  line-height: $lineHeightXxl
+  color: $gray50
+  z-index: -1
+  transition: color 1s $smooth
+  &.scrolled
+    color: $gray100
+
+p
+  &:first-of-type
+    margin-top: 0
+  &:last-of-type
+    margin-bottom: 0
+  a
+    text-decoration: underline
+
+ul
+  margin: 0 0 0 1rem
+  padding: 0
+
+ol
+  margin: 0 0 0 1rem
+  padding: 0 0 0 8px
+
+li
+  margin: 0.5rem 0
+
+hr, .hr
+  height: 2px
+  width: 100%
+  border: none
+  background: $gray200
+  margin-top: $spacingXl
+  margin-bottom: $spacingXl
+
+address
+  font-style: normal
+
+blockquote
+  font: $sans400
+  font-size: $fontSizeXl
+  line-height: $lineHeightXl
+  margin: unset
+
+
+
+// ---------------------------------------------
+// Links and Buttons
+// ---------------------------------------------
+
+a
+  position: relative
+  color: $gray700
+  text-decoration: none
+  transition: color $speedFast $smooth
+  &:visited
+    color: $gray700
+    text-decoration: none
+  &:focus
+    outline: thin dotted
+  &:hover,
+  &:active
+    outline: 0
+    color: $black
+    text-decoration: underline
+
+.jc-button
+  display: inline-flex
+  align-items: center
+  align-self: flex-start
+  border-radius: $radiusL
+  border: none
+  font: $sans600
+  font-size: $fontSizeS
+  line-height: $lineHeightXs
+  color: $white
+  background: $gray500
+  margin-top: $spacingL
+  padding: $spacingM $spacingL
+  transition: all $speedFast $smooth
+  &:hover
+    color: $white
+    background: $gray700
+    cursor: pointer
+  &:visited
+    color: $white
+  i
+    display: inline-flex
+    margin-left: $spacingXl
+  
+
+
+// ---------------------------------------------
+// Graphics
+// ---------------------------------------------
+
+figure
+  position: relative
+  margin: unset
+  overflow: hidden
+
+img
+  display: block
+  height: auto
+  max-width: 100%
+
+
+
+// ---------------------------------------------
+// Structure
+// ---------------------------------------------
+
+.theme-row
+  position: relative
+  display: block
+  overflow: hidden
+  padding-top: $rowSpacing
+  padding-bottom: $rowSpacing
+  &.bg-gray
+    padding-top: calc($rowSpacing / 2)
+    padding-bottom: calc($rowSpacing / 2)
+
+  &.bg-white + &.bg-white,
+  &.bg-gray + &.bg-gray
+    padding-top: 0
+  // main &.bg-white:first-child
+  //   padding-top: 0
+  
+  main &.bg-white:last-child
+    padding-bottom: calc( $rowSpacing - 8px)
+    @include viewport($small)
+      padding-bottom: calc( $rowSpacing - 16px)
+    @include viewport($medium)
+      padding-bottom: calc( $rowSpacing - 24px)
+
+.single-event .entry-content
+  & > *.bg-white:last-child
+    padding-bottom: 0

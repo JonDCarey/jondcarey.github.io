@@ -1,0 +1,75 @@
+@use '../abstracts' as *
+
+.site-footer
+  &__container
+    display: flex
+    flex-flow: row wrap
+    justify-content: space-between
+
+  &__left
+    flex: 0 0 auto
+    display: flex
+    flex-flow: row wrap
+    align-items: center
+
+  &__right
+    flex: 0 0 auto
+    display: flex
+    flex-flow: row nowrap
+    align-items: center
+
+  &__logo
+    flex: 0 0 100%
+    font-size: 2.125rem
+    margin: 0 $spacingXl 6px 0
+    @include viewport($small)
+      flex: 0 0 auto
+
+  &__nav
+    color: $gray500
+    text-transform: uppercase
+    font-size: clamp(0.875rem, 0.054vw + 0.863rem, 0.9375rem)
+    letter-spacing: 0.065625rem
+    span
+      display: none
+      @include viewport($small)
+        display: inline-flex
+    a
+      color: $gray700
+      padding: 12px 12px 12px 0
+      margin-left: $spacingM
+      &:first-of-type
+        margin-left: 0
+        @include viewport($small)
+          margin-left: $spacingXl
+
+  &__contact
+    flex: 0 0 auto
+    display: flex
+    flex-flow: row nowrap
+    align-items: center
+    margin-top: $spacingXl
+    margin-bottom: $spacingS
+    @include viewport($small)
+      margin: unset
+    a
+      flex: 0 0 28px
+      display: flex
+      flex-flow: row nowrap
+      align-items: center
+      justify-content: center
+      margin-left: $spacingL
+      color: $gray700
+      &:hover
+        color: $gray900
+      &:first-of-type
+        margin-left: 0
+    svg
+      width: 100%
+      height: auto
+
+  &__copywrite
+    flex: 0 0 100%
+    font-size: 14px
+    color: $gray700
+    margin-bottom: $spacingM

@@ -1,0 +1,56 @@
+@use '../abstracts' as *
+
+.work
+  position: relative
+  overflow: unset
+  overflow-x: clip
+  .section-title
+    top: -26rem
+    font-size: clamp(8rem, 28.959vw + 1.484rem, 20rem)
+    @include viewport($small)
+      top: -22rem
+    @include viewport($medium)
+      font-size: clamp(20rem, 3.401vw + 17.823rem, 22.5rem)
+      
+  &__link
+    display: flex
+    flex-flow: column nowrap
+    height: 100%
+    border-top: 2px solid $gray200
+    padding: $spacingXl 0
+    &:hover
+      text-decoration: none
+      *
+        color: $black
+        opacity: 1
+        filter: unset
+  
+  &__heading
+    order: 2
+    // flex: 0 0 100%
+    color: $gray800
+    transition: color $speedSlow $smooth
+    margin-top: 0
+    margin-bottom: $spacingXl
+
+  &__image
+    order: 3
+    // flex: 0 0 100%
+    align-self: flex-end
+    margin: auto 0 0
+    filter: grayscale(100%)
+    opacity: .7
+    transition: all $speedSlow $smooth
+
+  &__preheading
+    order: 1
+    // flex: 0 0 100%
+    color: $gray500
+    transition: color $speedSlow $smooth
+    margin: 0
+
+  &__specs
+    order: 4
+    font-size: $fontSizeXs
+    line-height: 1.5
+    padding-top: $spacingXs
