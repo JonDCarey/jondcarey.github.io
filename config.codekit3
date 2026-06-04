@@ -7,7 +7,7 @@
       "uuidString" : "519179A3-A35E-4B9E-8578-F0B2E96FC5B3"
     }
   ],
-  "creatorBuild" : "34689",
+  "creatorBuild" : "34892",
   "files" : {
     "\/css\/abstracts\/_colors.sass" : {
       "aP" : 1,
@@ -1811,6 +1811,9 @@
         "active" : 0,
         "optionString" : "{'skipBlankLines': false, 'ignoreComments': false}"
       },
+      "no-unassigned-vars" : {
+        "active" : 0
+      },
       "no-undef" : {
         "active" : 1,
         "optionString" : "{'typeof': false}"
@@ -1891,7 +1894,8 @@
         "active" : 0
       },
       "no-useless-escape" : {
-        "active" : 1
+        "active" : 1,
+        "optionString" : "{'allowRegexCharacters': []}"
       },
       "no-useless-rename" : {
         "active" : 0,
