@@ -44,7 +44,7 @@
       </div>
 
       <div class="hero__text">
-        <h1 class="hero__title">creative developer &<br /> wordpress engineer</h1>
+        <h1 class="hero__title">seasoned developer &<br /> wordpress engineer</h1>
 
         <h2 class="hero__sub-title">+ guitar nerd and father of three in<br /> Tampa, FL</h2>
       </div>
@@ -69,7 +69,7 @@
 
           <h2 class="about__title">I build websites that bring ideas to life—blending clean code, thoughtful design, and a focus on the people who use them.</h2>
 
-          <h3 class="about__sub-title heading-6">CSS/SASS, Git, HTML, Javascript, React, PHP, Wordpress theme & block development, Figma / XD, Photoshop</h3>
+          <h3 class="about__sub-title heading-6">Javascript, React, PHP, CSS/SASS, Git, Wordpress theme & block development, Figma / XD</h3>
         </div>
 
         <div class="cell xsmall-24 small-10">
@@ -94,10 +94,10 @@
       <div class="work__grid grid-x grid-margin-x">
         <div class="cell xsmall-24 small-12 large-8">
           <a href="https://studioparadis.com/" target="_blank" class="work__link">
-            <h3 class="work__heading heading-4">Thoughtful, intentional design</h3>
+            <h3 class="work__heading heading-4">Elevated spaces with soul, made for real life</h3>
             <h4 class="work__preheading heading-6">Studio Paradis</h4>
             <img src="./img/studio-paradis-min.png" alt="Screenshot of the Studio Paradis website" class="work__image">
-            <p class="work__specs">Development: Wordpress, PHP, Sass, Javascript, Git</p>
+            <p class="work__specs">Development: Javascript, Wordpress, PHP, Sass, Git</p>
           </a>
         </div>
         <div class="cell xsmall-24 small-12 large-8">
@@ -181,9 +181,17 @@
       </div>
 
       <div class="site-footer__copywrite">
-        <p>&copy;2025 JonDCarey Development.</p>
+        <p>
+          &copy;<span id="year"></span> JonDCarey Development.
+        </p>
       </div>
     </div>
   </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('year').textContent = new Date().getFullYear();
+    });
+  </script>
 </body>
 </html>
